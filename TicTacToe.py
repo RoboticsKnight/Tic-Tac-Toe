@@ -53,9 +53,25 @@ def play_game():
 # ======================================================================
 def handle_turn(player):
 
+    print(player + "'s turn.")
+
     # Player selecting where they would like to put their marker
     position = input("Choose a position from 1-9: ")
-    position = int(position) - 1
+
+    valid = False
+
+    while not valid:
+        # Input checking
+        while position not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+            position = input("Invalid input. Choose a position from 1-9: ")
+
+        position = int(position) - 1
+
+        # If the spot has been taken
+        if board[position] == "-":
+            valid = True
+        else:
+            print("You can't go there. Go again")
 
     board[position] = player
     display_board()
@@ -177,7 +193,13 @@ def check_diagonals():
 # ======================================================================
 # Tie checks
 # ======================================================================
-def check_if_tie():
+def check_if_tie(): # FIX (Tie is not being recognised as a result)
+
+    global game_still_going
+
+    if "-" not in board:
+        game_still_going == False
+
     return
 
 # ======================================================================
