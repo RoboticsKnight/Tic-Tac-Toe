@@ -198,7 +198,7 @@ def check_if_tie(): # FIX (Tie is not being recognised as a result)
     global game_still_going
 
     if "-" not in board:
-        game_still_going == False
+        game_still_going = False
 
     return
 
